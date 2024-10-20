@@ -1,38 +1,175 @@
-.App {
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  margin: 0;
+  padding: 20px;
+}
+
+/* Grocery List Container */
+h1 {
   text-align: center;
+  color: #007bff;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Search Bar */
+.search-bar {
+  text-align: center;
+  margin: 20px 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.search-bar input {
+  padding: 10px;
+  width: 80%;
+  max-width: 400px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  outline: none;
+}
+
+.search-bar input:focus {
+  border-color: #007bff;
+}
+
+/* Category Flex Layout */
+.category-flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 5px;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.category-box {
+  background-color: white;
+  padding: 10px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  flex: 1 1 calc(33.333% - 10px);
+  margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+  .category-box {
+    flex: 1 1 100%;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Grocery Item Layout */
+.item-flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.grocery-item {
+  flex: 1 1 45%;
+  background-color: white;
+  padding: 10px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: opacity 0.3s ease, text-decoration 0.3s ease;
+}
+
+.grocery-item.checked {
+  opacity: 0.6; /* Slight opacity for crossed-out items */
+}
+
+.item-display {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
+}
+
+.item-display.checked {
+  text-decoration: line-through;
+  color: gray; /* Cross out style */
+}
+
+.item-image {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.item-info {
+  text-align: center;
+}
+
+.item-name {
+  font-size: 0.9em;
+  font-weight: bold;
+  color: #007bff;
+}
+
+.item-price {
+  font-size: 0.8em;
+  color: #007bff;
+  margin-top: 5px;
+}
+
+.item-actions {
+  margin-top: 10px;
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  gap: 5px;
+}
+
+button.edit, button.delete {
   color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9em;
 }
 
-.App-link {
-  color: #61dafb;
+button.edit {
+  background-color: #6c757d;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+button.edit:hover {
+  background-color: #5a6268;
+}
+
+button.delete {
+  background-color: #6c757d;
+}
+
+button.delete:hover {
+  background-color: #5a6268;
+}
+
+/* Styling for checkbox */
+.item-checkbox {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+/* Crossout item when checked */
+.grocery-item.checked .item-display {
+  text-decoration: line-through;
+  color: gray;
+  opacity: 0.6;
+}
+
+.grocery-item.checked .item-info {
+  color: gray;
+  opacity: 0.6;
+}
+
+.grocery-item.checked .item-name {
+  text-decoration: line-through;
+}
+
+.grocery-item.checked .item-price {
+  text-decoration: line-through;
 }
